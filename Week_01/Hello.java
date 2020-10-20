@@ -9,16 +9,20 @@
 public class Hello {
 
     public static void main(String[] args) {
-        int i1 = 10;
-        int i2 = 1;
-        double d1 = 2.5;
-        for (int i = 0; i < 5; i++) {
-            i1 = i1 - 1;
-            i2 = i2 * 2;
-            if (i2 > i1) {
-                d1 = i2 / d1;
-            }
-        }
+//        int i1 = 10;
+//        int i2 = 1;
+//        double d1 = 2.5;
+//        for (int i = 0; i < 5; i++) {
+//            i1 = i1 - 1;
+//            i2 = i2 * 2;
+//            if (i2 > i1) {
+//                d1 = i2 / d1;
+//            }
+//        }
+        int num1 = 1;
+        int num2 = 2;
+        int num3= (num1 + num2 ) * 5;
+        System.out.println(num3);
 
     }
 }

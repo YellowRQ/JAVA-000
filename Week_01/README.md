@@ -79,20 +79,20 @@ Constant pool:								 // 常量池
         line 9: 0
 
   public static void main(java.lang.String[]);		
-    descriptor: ([Ljava/lang/String;)V				// 方法描述符（行参类型[String=字符串数组、方法返回类型V=空）
+    descriptor: ([Ljava/lang/String;)V				// 方法描述符（行参类型[String=字符串数组、方法返回类型V[void]）
     flags: ACC_PUBLIC, ACC_STATIC					// 方法访问类型（ACC_PUBLIC=公共方法，ACC_STATIC=静态方法）
     Code:	
-      stack=4, locals=6, args_size=1				// 栈的最大深度为4，本地变量表最大槽数为6,行参数为1
-         0: bipush        10				// 常量数字10，入操作数栈，常量数大于1-5用b[类型]push+操作数，入操作数栈
-         2: istore_1						//将栈顶int型数值存入第二个本地变量,入操作数栈
-         3: iconst_1						//将int型1推送至栈顶
-         4: istore_2
-         5: ldc2_w        #2                  // double 2.5d
-         8: dstore_3
-         9: iconst_0
-        10: istore        5
+      stack=4, locals=6, args_size=1				// 操作栈的最大深度为4，本地变量表最大槽数为6,行参数为1
+         0: bipush        10				//int常量数字10，入操作数栈，常量数大于1-5用b[类型]push+操作数，入操作数栈
+         2: istore_1						//int常量数字10，出操作数栈，入本地变量表槽位1，完成：代表int i1 = 10
+         3: iconst_1						//int常量数字1，将int型1推送至栈顶，放入操作数栈
+         4: istore_2						//int常量数字1，出操作数栈，入本地变量表槽位2  完成：代表int i2 = 1
+         5: ldc2_w        #2                // 将long或double型常量值从常量池中推送至栈顶（宽索引）
+         8: dstore_3                        //将double2.5，出操作数栈，入本地变量表槽位3 完成：double d1 = 2.5;
+         9: iconst_0						//int常量数字0 入操作数栈 for循环的int i=0
+        10: istore        5					//int常量数字0 出操作数栈 for循环的int i=0
         12: iload         5
-        14: iconst_5
+        14: iconst_5						//int常量数字5 出操作数栈 
         15: if_icmpge     42
         18: iload_1
         19: iconst_1
@@ -136,10 +136,6 @@ Constant pool:								 // 常量池
 SourceFile: "Hello.java"
 
 ```
-
-
-
-
 
 
 
@@ -271,7 +267,7 @@ Constant pool:                                   // 常量池
         14: iload_1                            // 局部标量表槽位1（int num1=1）出栈，入操作数栈
         15: iconst_1                           // 常量数字1，入操作数栈
         16: iadd                               // 操作数栈相加计算，代表：（int num1 = 1）+ （常量数子1）
-        17: istore_1                           // 将计算结果1+ 1 = 2从操作数栈，入本地变量表槽位1，代表完成：num1 = num1 + 1�
+        17: istore_1                           // 将计算结果1+ 1 = 2从操作数栈，入本地变量表槽位1，代表完成：num1 = num1 + 1
         18: iload_2                            // 局部变量表槽位2（int num2 = 10）出栈，入操作数栈
         19: iconst_1                           // 常量数字1，入操作数栈
         20: isub                               // 操作数栈相减计算，代表：（int num2 = 10）- (常量数字1) 
@@ -325,6 +321,3 @@ SourceFile: "Test.java"
 
 
 - 
-
-
-
