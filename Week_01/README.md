@@ -154,8 +154,6 @@ SourceFile: "Hello.java"
 
 
 
-
-
 <type>const_<val>、bipush、sipush、ldc这些指令都用于向操作数栈压入常量。例如：
 
 ```java
