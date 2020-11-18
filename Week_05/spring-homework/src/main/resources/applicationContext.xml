@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context-3.2.xsd
+                        http://www.springframework.org/schema/aop
+                        https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <context:annotation-config />
+    <aop:aspectj-autoproxy  />
+    <context:component-scan base-package="org.example.spring.homework1" />
+
+    <bean id="student001"
+          class="org.example.spring.homework1.aspectJ.Student">
+        <property name="id" value="001" />
+        <property name="name" value="吴宣仪" />
+    </bean>
+
+    <bean id="student002"
+          class="org.example.spring.homework1.aspectJ.Student">
+        <property name="id" value="002" />
+        <property name="name" value="程潇" />
+    </bean>
+
+    <bean id="class1" class="org.example.spring.homework1.aspectJ.Klass">
+        <property name="id" value="111"/>
+        <property name="students">
+            <list>
+                <ref bean="student001" />
+                <ref bean="student002" />
+            </list>
+        </property>
+    </bean>
+
+    <bean id="school" class="org.example.spring.homework1.aspectJ.School"/>
+
+    <!--切面类-->
+    <bean id="myAspectJ1" class="org.example.spring.homework1.aspectJ.MyAspectJ1"/>
+    <bean id="myAspectJ2" class="org.example.spring.homework1.aspectJ.MyAspectJ2"/>
+
+    <aop:config>
+        <aop:pointcut id="point" expression="execution(* org.example.spring.homework1.aspectJ.School.ding(..))"/>
+        <aop:aspect ref="myAspectJ2">
+            <aop:around method="around" pointcut-ref="point"/>
+            <aop:before method="before" pointcut-ref="point"/>
+            <aop:after method="after" pointcut-ref="point"/>
+        </aop:aspect>
+    </aop:config>
+
+</beans>
